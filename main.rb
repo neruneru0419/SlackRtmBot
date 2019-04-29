@@ -4,7 +4,10 @@ require 'sinatra'
 require "./get"
 
 nowtext = ""
-post '/' do
+get '/' do
+    puts "hello"
+end
+post '/slack' do
     text = get_text
     ts = get_ts
     if nowtext != text then
