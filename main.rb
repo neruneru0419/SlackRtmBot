@@ -1,15 +1,27 @@
+require 'http'
+require 'json'
 require 'sinatra'
-require 'sinatra/reloader'
-require 'sinatra/json'
+require "./get"
 
-post '/unknown' do
-    sentence = params['text']
-    return json({
-        text: "sentence",
-        response_type: 'in_channel',
-    })
-end
+nowtext = ""
+post '/' do
+    text = get_text
+    ts = get_ts
+    if nowtext != text then
+        response = HTTP.post("https://slack.com/api/chat.delete", params: {
+            token: ENV["NERUNERU_API_TOKEN"],
+            channel: "CFG3HU6TA",
+            ts: ts,
+            as_user: true,
+        })
 
-get '/' do
-  "Hello World"
+        response = HTTP.post("https://slack.com/api/chat.postMessage", params: {
+            token: ENV["SLACK_API_TOKEN"],
+            channel: "CFG3HU6TA",
+            text: text,
+            as_user: true,
+        })
+        nowtext = text
+        puts JSON.pretty_generate(JSON.parse(response.body))
+    end
 end
