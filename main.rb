@@ -1,30 +1,42 @@
 require 'http'
 require 'json'
-require 'sinatra'
-require "./get"
+require 'eventmachine'
+require 'faye/websocket'
+require './unknown'
 
-nowtext = ""
-get '/' do
-    puts "hello"
-end
-post '/slack' do
-    text = get_text
-    ts = get_ts
-    if nowtext != text then
-        response = HTTP.post("https://slack.com/api/chat.delete", params: {
-            token: ENV["NERUNERU_API_TOKEN"],
-            channel: "CFG3HU6TA",
-            ts: ts,
-            as_user: true,
-        })
+response = HTTP.post("https://slack.com/api/rtm.start", params: {
+    token: ENV['SLACK_API_TOKEN']
+  })
 
-        response = HTTP.post("https://slack.com/api/chat.postMessage", params: {
-            token: ENV["SLACK_API_TOKEN"],
-            channel: "CFG3HU6TA",
-            text: text,
-            as_user: true,
-        })
-        nowtext = text
-        puts JSON.pretty_generate(JSON.parse(response.body))
+rc = JSON.parse(response.body)
+
+url = rc['url']
+
+EM.run do
+  # Web Socketインスタンスの立ち上げ
+  ws = Faye::WebSocket::Client.new(url)
+  flg = true
+
+  #  接続が確立した時の処理
+  ws.on :open do
+    p [:open]
+  end
+
+  ws.on :message do |event|
+    data = JSON.parse(event.data)
+    p [:message, data]
+
+    if data['text'].is_a?(String) and flg then
+      unknown()
+      flg = false
+    elsif data['text'].is_a?(String) and not flg then
+      flg = true
     end
+  end
+
+  ws.on :close do
+    p [:close, event.code]
+    ws = nil
+    EM.stop
+  end
 end

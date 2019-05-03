@@ -8,6 +8,7 @@ def get_ts
     })
     hash = JSON.parse(response)
     puts hash
+    puts hash["messages"][0]["ts"]
     return hash["messages"][0]["ts"]
 end
 
