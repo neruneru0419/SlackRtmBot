@@ -8,6 +8,7 @@ response = HTTP.post("https://slack.com/api/rtm.start", params: {
     token: ENV['SLACK_API_TOKEN']
   })
 $count = 0
+$username = get_users
 rc = JSON.parse(response.body)
 
 url = rc['url']

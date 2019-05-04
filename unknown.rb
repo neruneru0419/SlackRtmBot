@@ -16,7 +16,7 @@ def unknown
         response = HTTP.post("https://slack.com/api/chat.postMessage", params: {
             token: ENV["SLACK_API_TOKEN"],
             channel: "CFG3HU6TA",
-            text: two_ch + text + "\n",
+            text: two_ch($username[$user_id]) + text + "\n",
             as_user: true,
         })
         puts JSON.pretty_generate(JSON.parse(response.body))

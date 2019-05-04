@@ -19,5 +19,26 @@ def get_text
         count: 1,
     })
     hash = JSON.parse(response)
-    return hash["messages"][0]["text"]
+    post_text = hash["messages"][0]["text"]
+    $user_id = hash["messages"][0]["user"]
+    if post_text[0] == "$" and post_text[-1] == "$" then
+        $username[$user_id] = post_text[1..-2]
+    end
+    return post_text
 end
+
+def get_users
+    response = HTTP.post("https://slack.com/api/users.list", params: {
+        token: ENV['SLACK_API_TOKEN'],
+    })
+    result = []
+    hash = JSON.parse(response)
+    p hash.class
+    hash["members"].size.times do |hoge|
+        result.push([])
+        result[hoge].push(hash["members"][hoge]["id"])
+        result[hoge].push("名無しのギラクさん")
+    end
+    return result.to_h
+end
+
