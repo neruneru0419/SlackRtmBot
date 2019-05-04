@@ -1,6 +1,7 @@
 require 'http'
 require 'json'
 require "./get"
+require "./2ch"
 
 def unknown
     text = get_text
@@ -15,7 +16,7 @@ def unknown
         response = HTTP.post("https://slack.com/api/chat.postMessage", params: {
             token: ENV["SLACK_API_TOKEN"],
             channel: "CFG3HU6TA",
-            text: text,
+            text: two_ch + text,
             as_user: true,
         })
         puts JSON.pretty_generate(JSON.parse(response.body))

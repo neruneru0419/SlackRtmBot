@@ -3,6 +3,7 @@ GEM
   specs:
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
+    date (2.0.0)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     eventmachine (1.2.7)
@@ -31,6 +32,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  date
   eventmachine
   faye-websocket
   http
