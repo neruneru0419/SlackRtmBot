@@ -2,8 +2,8 @@ require "date"
 
 def two_ch
     def zero_add(time)
-        if time.size == 1
-        time = "0" + time.to_s
+        if time.to_s.size == 1 then
+            time = "0" + time.to_s
         end
         return time
     end
