@@ -7,7 +7,7 @@ require './unknown'
 response = HTTP.post("https://slack.com/api/rtm.start", params: {
     token: ENV['SLACK_API_TOKEN']
   })
-
+$count = 0
 rc = JSON.parse(response.body)
 
 url = rc['url']
