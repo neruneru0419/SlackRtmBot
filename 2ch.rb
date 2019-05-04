@@ -10,7 +10,6 @@ def two_ch
     time = Time.new + 3600 * 9
     d = Date.today
 
-    $count = 1
     date =  %w(日 月 火 水 木 金 土)[d.wday]
     name = "名無しのギラクさん"
     year = time.year
