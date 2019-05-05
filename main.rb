@@ -27,11 +27,13 @@ EM.run do
     data = JSON.parse(event.data)
     p [:message, data]
 
-    if data['text'].is_a?(String) and flg then
-      unknown()
-      flg = false
-    elsif data['text'].is_a?(String) and not flg then
-      flg = true
+    if data['text'].is_a?(String) and data['channel'] == 'CFG3HU6TA' then
+      if flg then
+        unknown()
+        flg = false
+      else 
+        flg = true
+      end
     end
   end
 
