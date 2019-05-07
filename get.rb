@@ -21,10 +21,8 @@ def get_text
     hash = JSON.parse(response)
     post_text = hash["messages"][0]["text"]
     $user_id = hash["messages"][0]["user"]
-    if post_text[0] == "$" and post_text[-1] == "$" then
-        $username[$user_id] = post_text[1..-2]
-    end
-    return post_text
+    return_text = command(post_text)
+    return return_text
 end
 
 def get_users
