@@ -41,6 +41,7 @@ DEPENDENCIES
   eventmachine
   faye-websocket
   http
+  json
 
 RUBY VERSION
    ruby 2.5.1p57
