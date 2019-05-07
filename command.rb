@@ -1,9 +1,12 @@
 def command(text)
     if text[0] == "$" and text[-1] == "$" then
         $username[$user_id] = text[1..-2]
+        $girak_value["count"] = $count
+        $girak.write($girak_value.to_json)
         return text
     elsif text == "おみくじ" then
         isataku_fortune = [
+            "大吉：ISATAKUのおごりでやよい軒",
             "大吉：ISATAKUのおごりで大戸屋",
             "大吉：ISATAKUのおごりで焼肉",
             "中吉：ISATAKUのおごりでマック",
@@ -14,8 +17,10 @@ def command(text)
             "凶：ISATAKUに財布をスられる",
             "中吉：ISATAKUがadobeを買収",
             "吉：ISATAKUのおごりで台湾旅行",
-            "凶：ISATAKUがグーグルホームminiを買う"]
-        return isataku_fortune[rand(isataku_fortune.size)]
+            "凶：ISATAKUがグーグルホームminiを買う",
+            "中吉：ISATAKUのおごりでマック",
+            ]
+        return isataku_fortune.sample
     else
         return text
     end

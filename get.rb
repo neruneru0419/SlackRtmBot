@@ -1,6 +1,23 @@
+require 'aws-sdk-v1'
 require 'http'
 require 'json'
 require "./command"
+
+def get_json
+    AWS.config({
+        :access_key_id => ENV["AWS_API_KEY"],
+        :secret_access_key => ENV["AWS_SECRET_KEY"],
+    })
+
+    s3 = AWS::S3.new
+    bucket = s3.buckets["neruneru"]
+    $girak = bucket.objects["girak.json"]
+    hash = $girak.read
+    hash.force_encoding("utf-8")
+    hash = JSON.load(hash)
+    return hash
+end
+
 def get_ts
     response = HTTP.post("https://slack.com/api/channels.history", params: {
         token: ENV['SLACK_API_TOKEN'],
@@ -41,3 +58,4 @@ def get_users
     return result.to_h
 end
 
+p get_users

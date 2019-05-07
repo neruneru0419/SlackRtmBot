@@ -1,3 +1,4 @@
+require 'aws-sdk-v1'
 require 'http'
 require 'json'
 require 'eventmachine'
@@ -7,8 +8,9 @@ require './unknown'
 response = HTTP.post("https://slack.com/api/rtm.start", params: {
     token: ENV['SLACK_API_TOKEN']
   })
-$count = 226
-$username = get_users
+$girak_value = get_json
+$count = $girak_value["count"]
+$username = $girak_value["username"]
 rc = JSON.parse(response.body)
 
 url = rc['url']

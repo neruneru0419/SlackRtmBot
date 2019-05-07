@@ -18,5 +18,7 @@ def two_ch(name)
     usec.slice!(-4..-1)
     usec = zero_add(usec)
     $count += 1
+    $girak_value["count"] = $count
+    $girak.write($girak_value.to_json)
     return "#{$count} : #{name} : #{year}/#{mon}/#{day}(#{date}) #{hour}:#{min}:#{sec}:#{usec}\n"
 end
