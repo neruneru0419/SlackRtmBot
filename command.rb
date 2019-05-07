@@ -16,5 +16,7 @@ def command(text)
             "吉：ISATAKUのおごりで台湾旅行",
             "凶：ISATAKUがグーグルホームminiを買う"]
         return isataku_fortune[rand(isataku_fortune.size)]
+    else
+        return text
     end
 end
