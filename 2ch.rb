@@ -1,5 +1,3 @@
-require "date"
-
 def two_ch(name)
     def zero_add(time)
         if time.to_s.size == 1 then
@@ -8,9 +6,8 @@ def two_ch(name)
         return time
     end
     time = Time.new + 3600 * 9
-    d = Date.today
 
-    date =  %w(日 月 火 水 木 金 土)[d.wday]
+    date =  ["日", "月", "火", "水", "木", "金", "土"][time.wday]
     year = time.year
     mon = zero_add(time.mon)
     day = zero_add(time.day)
