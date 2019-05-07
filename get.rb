@@ -1,6 +1,6 @@
 require 'http'
 require 'json'
-require "./get"
+require "./command"
 def get_ts
     response = HTTP.post("https://slack.com/api/channels.history", params: {
         token: ENV['SLACK_API_TOKEN'],
