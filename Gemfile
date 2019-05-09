@@ -6,4 +6,4 @@ gem 'http'
 gem 'faye-websocket'
 gem 'eventmachine'
 gem "twitter"
-gem "mecab"
+gem 'natto'
