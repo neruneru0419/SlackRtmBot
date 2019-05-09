@@ -56,11 +56,7 @@ EM.run do
           flg = true
         end
       elsif data['channel'] == 'CJHUGT97W' then
-<<<<<<< HEAD
         if flg2 then
-=======
-        if flg then
->>>>>>> 62bdfd3d127f9d3e156f8d4370a8d5473d52ea3c
           girak_learn(ary)
           flg2 = false
         else 
