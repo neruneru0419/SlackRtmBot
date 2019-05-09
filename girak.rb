@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+require "./markov"
+=======
 require "./marcov"
+>>>>>>> 62bdfd3d127f9d3e156f8d4370a8d5473d52ea3c
 require "http"
 require "json"
 def girak_text(str)
@@ -22,6 +26,24 @@ end
 
 def girak_learn(kitukitu)
 
+<<<<<<< HEAD
+    puts kitukitu.size
+    learn_kitu = kitukitu.sample[0]
+    flg = true
+    p learn_kitu
+    loop do 
+        learn_kitu, flg = chain(learn_kitu, kitukitu)
+        p learn_kitu
+        break if learn_kitu[-1].empty? or flg
+    end
+    puts learn_kitu.join
+    response = HTTP.post("https://slack.com/api/chat.postMessage", params: {
+        token: ENV["SLACK_API_TOKEN"],
+        channel: "CJHUGT97W",
+        text:learn_kitu.join,
+        as_user: true,
+    })
+=======
 puts kitukitu.size
 learn_kitu = kitukitu.sample[0]
 flg = true
@@ -38,4 +60,5 @@ response = HTTP.post("https://slack.com/api/chat.postMessage", params: {
     text:learn_kitu.join,
     as_user: true,
 })
+>>>>>>> 62bdfd3d127f9d3e156f8d4370a8d5473d52ea3c
 end

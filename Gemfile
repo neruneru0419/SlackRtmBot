@@ -5,3 +5,5 @@ gem 'aws-sdk-v1'
 gem 'http'
 gem 'faye-websocket'
 gem 'eventmachine'
+gem "twitter"
+gem "mecab"

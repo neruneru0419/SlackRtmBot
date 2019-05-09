@@ -1,7 +1,4 @@
-require 'http'
-require 'json'
 require "./get"
-require "./2ch"
 
 def unknown
     text = get_text
@@ -12,12 +9,14 @@ def unknown
             ts: ts,
             as_user: true,
         })
-
-        response = HTTP.post("https://slack.com/api/chat.postMessage", params: {
-            token: ENV["SLACK_API_TOKEN"],
-            channel: "CFG3HU6TA",
-            text: two_ch($username[$user_id]) + text + "\n",
-            as_user: true,
-        })
-        puts JSON.pretty_generate(JSON.parse(response.body))
+        
+        text.each do |res|
+            response = HTTP.post("https://slack.com/api/chat.postMessage", params: {
+                token: ENV["SLACK_API_TOKEN"],
+                channel: "CFG3HU6TA",
+                text: two_ch($username[$user_id]) + res + "\n",
+                as_user: true,
+            })
+        end
+        #puts JSON.pretty_generate(JSON.parse(response.body))
 end

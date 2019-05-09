@@ -1,5 +1,6 @@
 require 'faye/websocket'
 require 'aws-sdk-v1'
+require 'twitter'
 require 'http'
 require 'json'
 require 'eventmachine'
@@ -23,8 +24,16 @@ ary += girak_text("CEABD696C")
 ary += girak_text("CBMJ0BMT6")
 ary += girak_text("CAZ7HSFU6")
 
+
 EM.run do
-  # Web Socketインスタンスの立ち上げ
+  ary = []
+  ary += girak_text("C8DCH0KA6")
+  ary += girak_text("CAT2HJBQX") 
+  ary += girak_text("CJHUGT97W") 
+  ary += girak_text("CF51F0YFR") 
+  ary += girak_text("CEABD696C")
+  ary += girak_text("CBMJ0BMT6")
+  ary += girak_text("CAZ7HSFU6")
   ws = Faye::WebSocket::Client.new(url)
   flg = true
   flg2 = true
@@ -47,7 +56,11 @@ EM.run do
           flg = true
         end
       elsif data['channel'] == 'CJHUGT97W' then
+<<<<<<< HEAD
+        if flg2 then
+=======
         if flg then
+>>>>>>> 62bdfd3d127f9d3e156f8d4370a8d5473d52ea3c
           girak_learn(ary)
           flg2 = false
         else 
