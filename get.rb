@@ -132,5 +132,3 @@ def command(text)
         return [text]
     end
 end
-a = command("キーツとおはなし")
-p a
