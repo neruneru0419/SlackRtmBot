@@ -97,7 +97,7 @@ def command(text)
             config.access_token    = ENV['MY_ACCESS_TOKEN']
             config.access_token_secret = ENV['MY_ACCESS_TOKEN_SECRET']
         end
-        client.user_timeline("@S__Frandle", {count: 200}).each do |tweet|
+        client.user_timeline("@koishihshs", {count: 200}).each do |tweet|
             unless tweet.text.include?("RT") or tweet.text.include?("@") or tweet.text.include?("http") then
                 kitukitu.push(analysis(tweet.text))
                 #p kitukitu
