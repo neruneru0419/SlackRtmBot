@@ -127,7 +127,7 @@ def command(text)
             "凶：ISATAKUがグーグルホームminiを買う",
             "中吉：ISATAKUのおごりでマック",
             ]
-        return isataku_fortune.sample.to_a
+        return [isataku_fortune.sample]
     else
         return [text]
     end
