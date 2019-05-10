@@ -15,14 +15,6 @@ $username = $girak_value["username"]
 rc = JSON.parse(response.body)
 
 url = rc['url']
-ary = []
-ary += girak_text("C8DCH0KA6")
-ary += girak_text("CAT2HJBQX") 
-ary += girak_text("CJHUGT97W") 
-ary += girak_text("CF51F0YFR") 
-ary += girak_text("CEABD696C")
-ary += girak_text("CBMJ0BMT6")
-ary += girak_text("CAZ7HSFU6")
 
 
 EM.run do
