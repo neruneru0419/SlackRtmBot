@@ -12,7 +12,7 @@ def girak_text(str)
     hash = JSON.parse(response)
     (hash["messages"].size).times do |hoge|
         girak_text = hash["messages"][hoge]["text"]
-        if !( girak_text[0].nil?) and girak_text[0] != ":" and girak_text[0]　!= "<" then
+        if !( girak_text[0].nil?) and girak_text[0] != ":" and girak_text[0] != "<" then
             #puts girak_text
             kitukitu.push(analysis(girak_text))
         end
