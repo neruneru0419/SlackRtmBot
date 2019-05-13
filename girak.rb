@@ -29,7 +29,7 @@ def girak_learn(kitukitu)
     loop do 
         learn_kitu, flg = chain(learn_kitu, kitukitu)
         p learn_kitu
-        break if learn_kitu[-1].empty? or flg
+        break if learn_kitu[-1].empty? or flg or 100 <= learn_kitu.join 
     end
     puts learn_kitu.join
     response = HTTP.post("https://slack.com/api/chat.postMessage", params: {
