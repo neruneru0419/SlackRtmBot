@@ -12,7 +12,7 @@ def girak_text(str)
     hash = JSON.parse(response)
     (hash["messages"].size).times do |hoge|
         girak_text = hash["messages"][hoge]["text"]
-        if !( girak_text.nil?) or girak_text[0] != ":" or girak_text[0] != "<" then
+        if !( girak_text.nil?) or girak_text[0] != ":" or girak_text[0] != "<" or girak_text.include?("MATSUMOTO") then
             #puts girak_text
             kitukitu.push(analysis(girak_text))
         end
@@ -21,14 +21,17 @@ def girak_text(str)
 end
 
 def girak_learn(kitukitu)
-
+    kitukitu.delete([])
     puts kitukitu.size
-    learn_kitu = kitukitu.sample[0]
+    #p kitukitu
+    girak = kitukitu.sample
+    #p girak
+    learn_kitu = girak[0] 
     flg = true
-    p learn_kitu
+    #p learn_kitu
     loop do 
         learn_kitu, flg = chain(learn_kitu, kitukitu)
-        p learn_kitu
+        #p learn_kitu
         break if learn_kitu[-1].empty? or flg or (100 <= learn_kitu.join.size)
     end
     puts learn_kitu.join

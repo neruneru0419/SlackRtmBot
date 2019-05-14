@@ -37,7 +37,7 @@ EM.run do
 
   ws.on :message do |event|
     data = JSON.parse(event.data)
-    p [:message, data]
+    #p [:message, data]
     
     if data['text'].is_a?(String) then
       if data['channel'] == 'CFG3HU6TA' then

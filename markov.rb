@@ -39,15 +39,15 @@ def chain(rensa, test)
   end
   
   ran = rand(kouho.size)
-  p kouho
+  #p kouho
   if kouho[ran].nil? then
-    puts "nilです"
+    #puts "nilです"
     return rensa, true
   elsif kouho.empty? and !(kouho.nil?) then
-    puts "emptyです"
+    #puts "emptyです"
     return rensa, true
   else
-    puts "elseです"
+    #puts "elseです"
     return rensa + kouho[ran][1..(kouho[ran].size)], false
   end
 end  
