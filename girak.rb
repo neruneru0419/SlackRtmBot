@@ -17,6 +17,7 @@ def girak_text(str)
             kitukitu.push(analysis(girak_text))
         end
     end
+    kitukitu.uniq!
     return kitukitu
 end
 
