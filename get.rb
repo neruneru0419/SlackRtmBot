@@ -40,6 +40,7 @@ def get_text
     post_text = hash["messages"][0]["text"]
     $user_id = hash["messages"][0]["user"]
     return_text = command(post_text)
+    return_text.delete("@")
     return return_text
 end
 
