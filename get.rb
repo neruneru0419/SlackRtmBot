@@ -39,8 +39,8 @@ def get_text
     hash = JSON.parse(response)
     post_text = hash["messages"][0]["text"]
     $user_id = hash["messages"][0]["user"]
-    return_text.delete!("@channel")
-    return_text.delete!("@here")
+    post_text.delete!("@channel")
+    post_text.delete!("@here")
     return_text = command(post_text)
     return_text.delete!("@")
     return return_text
