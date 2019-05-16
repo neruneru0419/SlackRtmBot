@@ -1,5 +1,5 @@
-require 'aws-sdk-v1'
 require "twitter"
+require 'aws-sdk-v1'
 require 'http'
 require 'json'
 require "./markov"

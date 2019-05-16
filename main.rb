@@ -6,6 +6,7 @@ require 'json'
 require 'eventmachine'
 require "./unknown"
 require "./girak"
+
 response = HTTP.post("https://slack.com/api/rtm.start", params: {
     token: ENV['SLACK_API_TOKEN']
   })
