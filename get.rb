@@ -39,10 +39,10 @@ def get_text
     hash = JSON.parse(response)
     post_text = hash["messages"][0]["text"]
     $user_id = hash["messages"][0]["user"]
-    post_text.delete!("@channel")
-    post_text.delete!("@here")
+    post_text.gsub!(/@/, '＠')
+    post_text.gsub!(/<!here>/, '')
+    post_text.gsub!(/<!channel/, '')
     return_text = command(post_text)
-    return_text.delete!("@")
     return return_text
 end
 
@@ -87,7 +87,7 @@ def two_ch(name)
 end
 
 def command(text)
-    if text[0] == "$" and text[-1] == "$" and !(text.include?("@")) and text.size <= 30 then
+    if text[0] == "$" and text[-1] == "$" and　text.size <= 30 then
         $username[$user_id] = text[1..-2]
         $girak_value["count"] = $count
         $girak.write($girak_value.to_json)
