@@ -6,7 +6,6 @@ require 'json'
 require 'eventmachine'
 require "./unknown"
 require "./girak"
-
 response = HTTP.post("https://slack.com/api/rtm.start", params: {
     token: ENV['SLACK_API_TOKEN']
   })
@@ -28,9 +27,6 @@ EM.run do
   ary += girak_text("CBMJ0BMT6")
   ary += girak_text("CAZ7HSFU6")
   ws = Faye::WebSocket::Client.new(url)
-  flg = true
-  flg2 = true
-
   #  接続が確立した時の処理
   ws.on :open do
     p [:open]
@@ -38,23 +34,12 @@ EM.run do
 
   ws.on :message do |event|
     data = JSON.parse(event.data)
-    #p [:message, data]
     
-    if data['text'].is_a?(String) then
+    if data['text'].is_a?(String) and data['user'] != "UEXQQH88M" then
       if data['channel'] == 'CFG3HU6TA' then
-        if flg then
           unknown()
-          flg = false
-        else 
-          flg = true
-        end
       elsif data['channel'] == 'CJHUGT97W' then
-        if flg2 then
           girak_learn(ary)
-          flg2 = false
-        else 
-          flg2 = true
-        end
       end
     end
   end
