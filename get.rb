@@ -87,7 +87,7 @@ def two_ch(name)
 end
 
 def command(text)
-    if text[0] == "$" and text[-1] == "$" and　text.size <= 30 then
+    if text[0] == "$" and text[-1] == "$" and text.size <= 30 then
         $username[$user_id] = text[1..-2]
         $girak_value["count"] = $count
         $girak.write($girak_value.to_json)
