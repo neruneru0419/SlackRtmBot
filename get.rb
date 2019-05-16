@@ -89,7 +89,7 @@ def command(text)
         $username[$user_id] = text[1..-2]
         $girak_value["count"] = $count
         $girak.write($girak_value.to_json)
-        return [text]
+        return text
     elsif text == "キーツとおはなし" then
         kitukitu = []
         client = Twitter::REST::Client.new do |config|
@@ -111,7 +111,7 @@ def command(text)
             learn_kitu, flg = chain(learn_kitu, kitukitu)
             break if learn_kitu[-1].empty? or flg
         end
-        return [learn_kitu.join]
+        return learn_kitu.join
     elsif text == "おみくじ" then
         isataku_fortune = [
             "大吉：ISATAKUのおごりでやよい軒",
@@ -128,8 +128,8 @@ def command(text)
             "凶：ISATAKUがグーグルホームminiを買う",
             "中吉：ISATAKUのおごりでマック",
             ]
-        return [isataku_fortune.sample]
+        return isataku_fortune.sample
     else
-        return [text]
+        return text
     end
 end
