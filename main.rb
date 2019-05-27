@@ -19,13 +19,14 @@ url = rc['url']
 
 EM.run do
   ary = []
-  ary += girak_text("C8DCH0KA6")
-  ary += girak_text("CAT2HJBQX") 
- #ary += girak_text("CJHUGT97W")
- #ary += girak_text("CF51F0YFR") 
-  ary += girak_text("CEABD696C")
-  ary += girak_text("CBMJ0BMT6")
-  ary += girak_text("CAZ7HSFU6")
+  ary += girak_text("C8DCH0KA6")#random
+  ary += girak_text("CAT2HJBQX")#mi 
+  ary += girak_text("CEABD696C")#怪文書
+  ary += girak_text("CBMJ0BMT6")#飯ん
+  ary += girak_text("CBD6P1EF9")#pc
+  ary += girak_text("CAT1J8H2T")#programming
+  ary += girak_text("CFJAQRF3Q")#web
+  ary += girak_text("CAZ7HSFU6")#os
   ws = Faye::WebSocket::Client.new(url)
   #  接続が確立した時の処理
   ws.on :open do
