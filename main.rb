@@ -21,7 +21,7 @@ EM.run do
   ary = []
   ary += girak_text("C8DCH0KA6")#random
   ary += girak_text("CAT2HJBQX")#mi 
-  #ary += girak_text("CEABD696C")#怪文書
+  ary += girak_text("CEABD696C")#怪文書
   ary += girak_text("CBMJ0BMT6")#飯ん
   ary += girak_text("CBD6P1EF9")#pc
   ary += girak_text("CAT1J8H2T")#programming
