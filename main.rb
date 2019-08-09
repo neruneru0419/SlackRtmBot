@@ -6,6 +6,7 @@ require 'json'
 require 'eventmachine'
 require "./unknown"
 require "./girak"
+requure "./get"
 response = HTTP.post("https://slack.com/api/rtm.start", params: {
     token: ENV['SLACK_API_TOKEN']
   })
@@ -36,12 +37,15 @@ EM.run do
   ws.on :message do |event|
     data = JSON.parse(event.data)
     
-    if data['text'].is_a?(String) and data['user'] != "UEXQQH88M" then
-      if data['channel'] == 'CFG3HU6TA' then
-          unknown()
-      elsif data['channel'] == 'CJHUGT97W' then
-          girak_learn(ary)
-      end
+    if data['text'].is_a?(String) then
+      text = get_text
+      ts = get_ts
+        response = HTTP.post("https://slack.com/api/chat.delete", params: {
+            token: ENV["NERUNERU_API_TOKEN"],
+            channel: "CFG3HU6TA",
+            ts: ts,
+            as_user: true,
+        })
     end
   end
 
